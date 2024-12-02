@@ -1,16 +1,43 @@
-const form = document.querySelector(".contact-form form");
+const realizarOperacion = (num1, num2, operacion) => {
+    if (operacion == "suma") {
+        return (num1 + num2);
+    } 
+    else if (operacion == "resta") {
+        return (num1 - num2);
+    }
+    else if (operacion == "multiplicacion") {
+        return (num1 * num2);
+    }
+    else if (operacion == "division") {
+        if (num2 == 0) {
+            return "No es posible realizar una division por cero"
+        }
 
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
+        return (num1 / num2);
+    }
+    else {
+        return "Esta operacion no es valida"
+    }
+}
 
-    const nombre = document.getElementById('nombre').value;
-    const descripcion = document.getElementById('descripcion').value;
-    const correo = document.getElementById('correo').value;
+let num1, num2, operacion;
+let pregunta;
 
-    console.log("Nombre:", nombre);
-    console.log("Descripción:", descripcion);
-    console.log("Correo:", correo);
+while(operacion != "salir") {
+    num1 = prompt("\nIngrese el primer numero \n");
+    num2 = prompt("Ingrese el segundo numero \n");
+    
+    operacion = prompt("Ingrese la operacion (suma, resta, multiplicacion, division): \n");
 
-    alert("Hola " + nombre + ", su correo es " + correo + " y su motivo de contacto es: \n" + descripcion);
-});
+    console.log("El resultado es: ")
+    console.log(realizarOperacion(+num1, +num2, operacion))
 
+    pregunta = prompt("\n\nDesea realizar otra operacion? \n")
+
+    if (pregunta == "si") {
+        continue
+    } else {
+        console.log("Gracias por usar la calculadora! Adios!!\n")
+        break
+    }
+}
